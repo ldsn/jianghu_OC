@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014D722B1FC55F9B008626AB /* WV.m in Sources */ = {isa = PBXBuildFile; fileRef = 014D722A1FC55F9B008626AB /* WV.m */; };
+		014D722F1FC577FD008626AB /* aaa.html in Resources */ = {isa = PBXBuildFile; fileRef = 014D722E1FC577FD008626AB /* aaa.html */; };
 		017A69F91FADD56C00B18FE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A69F81FADD56C00B18FE9 /* main.m */; };
 		017A69FC1FADD56C00B18FE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A69FB1FADD56C00B18FE9 /* AppDelegate.m */; };
 		017A69FF1FADD56C00B18FE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A69FE1FADD56C00B18FE9 /* ViewController.m */; };
@@ -15,6 +17,7 @@
 		017A6A071FADD56C00B18FE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A6A051FADD56C00B18FE9 /* LaunchScreen.storyboard */; };
 		017A6A121FADD56C00B18FE9 /* jianghuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A6A111FADD56C00B18FE9 /* jianghuTests.m */; };
 		017A6A1D1FADD56C00B18FE9 /* jianghuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A6A1C1FADD56C00B18FE9 /* jianghuUITests.m */; };
+		017A6A2C1FADDFBD00B18FE9 /* WKDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A6A2B1FADDFBD00B18FE9 /* WKDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		014D72291FC55EC2008626AB /* WV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WV.h; sourceTree = "<group>"; };
+		014D722A1FC55F9B008626AB /* WV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WV.m; sourceTree = "<group>"; };
+		014D722E1FC577FD008626AB /* aaa.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aaa.html; sourceTree = "<group>"; };
 		017A69F41FADD56C00B18FE9 /* jianghu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jianghu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		017A69F81FADD56C00B18FE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		017A69FA1FADD56C00B18FE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +57,8 @@
 		017A6A181FADD56C00B18FE9 /* jianghuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jianghuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		017A6A1C1FADD56C00B18FE9 /* jianghuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jianghuUITests.m; sourceTree = "<group>"; };
 		017A6A1E1FADD56C00B18FE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		017A6A2A1FADDFBD00B18FE9 /* WKDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKDelegate.h; sourceTree = "<group>"; };
+		017A6A2B1FADDFBD00B18FE9 /* WKDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,12 +112,17 @@
 				017A69FA1FADD56C00B18FE9 /* AppDelegate.h */,
 				017A69FB1FADD56C00B18FE9 /* AppDelegate.m */,
 				017A69FD1FADD56C00B18FE9 /* ViewController.h */,
+				014D72291FC55EC2008626AB /* WV.h */,
 				017A69FE1FADD56C00B18FE9 /* ViewController.m */,
+				014D722A1FC55F9B008626AB /* WV.m */,
 				017A6A001FADD56C00B18FE9 /* Main.storyboard */,
 				017A6A031FADD56C00B18FE9 /* Assets.xcassets */,
+				014D722E1FC577FD008626AB /* aaa.html */,
 				017A6A051FADD56C00B18FE9 /* LaunchScreen.storyboard */,
 				017A6A081FADD56C00B18FE9 /* Info.plist */,
 				017A69F71FADD56C00B18FE9 /* Supporting Files */,
+				017A6A2A1FADDFBD00B18FE9 /* WKDelegate.h */,
+				017A6A2B1FADDFBD00B18FE9 /* WKDelegate.m */,
 			);
 			path = jianghu;
 			sourceTree = "<group>";
@@ -248,6 +261,7 @@
 			files = (
 				017A6A071FADD56C00B18FE9 /* LaunchScreen.storyboard in Resources */,
 				017A6A041FADD56C00B18FE9 /* Assets.xcassets in Resources */,
+				014D722F1FC577FD008626AB /* aaa.html in Resources */,
 				017A6A021FADD56C00B18FE9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,7 +287,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017A6A2C1FADDFBD00B18FE9 /* WKDelegate.m in Sources */,
 				017A69FF1FADD56C00B18FE9 /* ViewController.m in Sources */,
+				014D722B1FC55F9B008626AB /* WV.m in Sources */,
 				017A69FC1FADD56C00B18FE9 /* AppDelegate.m in Sources */,
 				017A69F91FADD56C00B18FE9 /* main.m in Sources */,
 			);
@@ -507,6 +523,7 @@
 				017A6A231FADD56C00B18FE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		017A6A241FADD56C00B18FE9 /* Build configuration list for PBXNativeTarget "jianghuTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +532,7 @@
 				017A6A261FADD56C00B18FE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		017A6A271FADD56C00B18FE9 /* Build configuration list for PBXNativeTarget "jianghuUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +541,7 @@
 				017A6A291FADD56C00B18FE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
