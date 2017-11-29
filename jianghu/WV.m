@@ -78,9 +78,10 @@
         NSString *event = [body valueForKey:@"event"];
         NSString *arg = [body valueForKey:@"arg"];
         if ([event isEqualToString:@"load"]) {
-            NSString *url = [body valueForKey:@"arg"];
-            NSLog(@"%@",url);
-            NSURLRequest *URL = [NSURLRequest requestWithURL: [NSURL URLWithString:url] cachePolicy:1 timeoutInterval:30.0f];
+            NSLog(@"%@",arg);
+            [self.popView evaluateJavaScript:@"window.document && (document.innerHTML = '')" completionHandler:^(id xxx, NSError * _Nullable error) {
+            }];
+            NSURLRequest *URL = [NSURLRequest requestWithURL: [NSURL URLWithString:arg] cachePolicy:1 timeoutInterval:30.0f];
             [self.popView loadRequest: URL];
         }
         if ([event isEqualToString:@"hide"]) {

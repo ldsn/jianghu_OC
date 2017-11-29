@@ -34,8 +34,8 @@
     configuration2.userContentController = userContentController2;
     
     self.appView = [[WKWebView alloc] initWithFrame:rect configuration:configuration1];
-    self.popView = [[WKWebView alloc] initWithFrame:rect configuration:configuration2];
-
+    self.popView = [[PopView alloc] initWithFrame:rect configuration:configuration2];
+    
     [self.appView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://jianghu.ldustu.com"] cachePolicy:1 timeoutInterval:30.0f]];
     
     WV* wv = [[WV alloc] init];
@@ -64,6 +64,11 @@
 - (void)aa {
     NSLog(@"13");
     
+}
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    
+    return _popView;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import "WV.h"
+#import "PopView.h"
 
 @interface ViewController : UIViewController
 
 @property WKWebView *appView;
-@property WKWebView *popView;
+@property PopView *popView;
 
 
 @end
