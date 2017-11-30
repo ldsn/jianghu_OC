@@ -37,11 +37,11 @@
     self.appView = [[WKWebView alloc] initWithFrame:rect configuration:configuration1];
     self.popView = [[PopView alloc] initWithFrame:rect configuration:configuration2];
     
-//    [self.appView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://jianghu.ldustu.com"] cachePolicy:1 timeoutInterval:30.0f]];
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
-    NSURL* url = [NSURL fileURLWithPath:path];
-    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
-    [self.appView  loadRequest:request];
+    [self.appView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://jianghu.ldustu.com"] cachePolicy:1 timeoutInterval:30.0f]];
+//    NSString* path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
+//    NSURL* url = [NSURL fileURLWithPath:path];
+//    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
+//    [self.appView  loadRequest:request];
     
     WV* wv = [WV getInstance];
     
