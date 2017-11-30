@@ -18,6 +18,7 @@
 		017A6A121FADD56C00B18FE9 /* jianghuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A6A111FADD56C00B18FE9 /* jianghuTests.m */; };
 		017A6A1D1FADD56C00B18FE9 /* jianghuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A6A1C1FADD56C00B18FE9 /* jianghuUITests.m */; };
 		017A6A2C1FADDFBD00B18FE9 /* WKDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A6A2B1FADDFBD00B18FE9 /* WKDelegate.m */; };
+		01F27B821FCFF6670041E454 /* 404.html in Resources */ = {isa = PBXBuildFile; fileRef = 01F27B811FCFF6670041E454 /* 404.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		017A6A1E1FADD56C00B18FE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		017A6A2A1FADDFBD00B18FE9 /* WKDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKDelegate.h; sourceTree = "<group>"; };
 		017A6A2B1FADDFBD00B18FE9 /* WKDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKDelegate.m; sourceTree = "<group>"; };
+		01F27B811FCFF6670041E454 /* 404.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		017A69F61FADD56C00B18FE9 /* jianghu */ = {
 			isa = PBXGroup;
 			children = (
+				01F27B801FCFF64D0041E454 /* html */,
 				0174C4E51FCE73910060C9D9 /* PopView */,
 				017A69FA1FADD56C00B18FE9 /* AppDelegate.h */,
 				017A69FB1FADD56C00B18FE9 /* AppDelegate.m */,
@@ -161,6 +164,14 @@
 				017A6A1E1FADD56C00B18FE9 /* Info.plist */,
 			);
 			path = jianghuUITests;
+			sourceTree = "<group>";
+		};
+		01F27B801FCFF64D0041E454 /* html */ = {
+			isa = PBXGroup;
+			children = (
+				01F27B811FCFF6670041E454 /* 404.html */,
+			);
+			name = html;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,7 +241,7 @@
 				TargetAttributes = {
 					017A69F31FADD56C00B18FE9 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8VHRP9P2YX;
+						DevelopmentTeam = 9NLUBT4P4G;
 						ProvisioningStyle = Automatic;
 					};
 					017A6A0C1FADD56C00B18FE9 = {
@@ -273,6 +284,7 @@
 				017A6A071FADD56C00B18FE9 /* LaunchScreen.storyboard in Resources */,
 				017A6A041FADD56C00B18FE9 /* Assets.xcassets in Resources */,
 				017A6A021FADD56C00B18FE9 /* Main.storyboard in Resources */,
+				01F27B821FCFF6670041E454 /* 404.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,11 +464,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8VHRP9P2YX;
+				DEVELOPMENT_TEAM = 9NLUBT4P4G;
 				INFOPLIST_FILE = jianghu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ldustu.jianghu2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ldustu.jianghu.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -468,11 +480,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8VHRP9P2YX;
+				DEVELOPMENT_TEAM = 9NLUBT4P4G;
 				INFOPLIST_FILE = jianghu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ldustu.jianghu2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ldustu.jianghu.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

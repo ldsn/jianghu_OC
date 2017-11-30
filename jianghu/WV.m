@@ -31,7 +31,7 @@
     
     
     av.navigationDelegate = self;
-    pv.navigationDelegate = self;
+//    pv.navigationDelegate = self;
 
     
     [self.popView setHidden:true];
@@ -42,6 +42,12 @@
     
     [self resetUA];
     
+}
+- (void) webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"404" ofType:@"html"];
+    NSURL* url = [NSURL fileURLWithPath:path];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
+    [webView loadRequest:request];
 }
 
 - (void) resetUA {

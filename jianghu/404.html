@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no, viewport-fit=cover" />
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    ._404 {
+        font-size: 60px;
+        color: #777;
+        font-family: arial;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .tip {
+        position: absolute;
+        height: 130px;
+        top: 50%;
+        margin-top: -50px;
+        width: 100%;
+    }
+    .button {
+        position: absolute;
+        width: 100px;
+        line-height: 30px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        color: #999;
+        text-align: center;
+        left: 50%;
+        margin-left: -50px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="tip">
+        <div class="_404">
+            404
+        </div>
+        <div class="button">
+            刷新页面
+        </div>
+    </div>
+    <script>
+        document.querySelector('.button').addEventListener('click', ()=>{
+            location.href="http://jianghu.ldustu.com"
+        })
+    </script>
+</body>
+
+</html>
