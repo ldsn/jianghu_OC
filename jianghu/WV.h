@@ -14,5 +14,12 @@
 
 @property WKWebView *appView;
 @property WKWebView *popView;
+@property NSMutableArray *msgList;
+@property BOOL status;
+
 -(void) initWebView: (WKWebView*)av popView: (WKWebView*)pv;
+-(void) sendMessage: (NSString *) evt message:(NSString *)arg;
+- (void) flushMessage;
++ (void) setStatus: (BOOL) status;
++(WV*) getInstance;
 @end

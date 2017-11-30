@@ -10,7 +10,8 @@
 
 
 
-@implementation ViewController
+
+@implementation ViewController 
 
 
 
@@ -36,9 +37,13 @@
     self.appView = [[WKWebView alloc] initWithFrame:rect configuration:configuration1];
     self.popView = [[PopView alloc] initWithFrame:rect configuration:configuration2];
     
-    [self.appView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://jianghu.ldustu.com"] cachePolicy:1 timeoutInterval:30.0f]];
+//    [self.appView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://jianghu.ldustu.com"] cachePolicy:1 timeoutInterval:30.0f]];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
+    NSURL* url = [NSURL fileURLWithPath:path];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
+    [self.appView  loadRequest:request];
     
-    WV* wv = [[WV alloc] init];
+    WV* wv = [WV getInstance];
     
     [wv initWebView:self.appView popView:self.popView];
     
@@ -49,7 +54,10 @@
     // 订阅前后台切换通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(aa) name:UIApplicationWillEnterForegroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bb) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
 }
+
+
 
 - (void)bb {
     [self.appView evaluateJavaScript:@"alert(123)" completionHandler:^(id _Nullable wd, NSError * _Nullable error) {
@@ -64,11 +72,6 @@
 - (void)aa {
     NSLog(@"13");
     
-}
-
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    
-    return _popView;
 }
 
 - (void)didReceiveMemoryWarning {

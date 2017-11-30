@@ -11,12 +11,48 @@
 
 @implementation WV
 
-- (id) init {
-    self = [super init];
-    if (self) {
-        NSLog(@"init webview");
+static WV* _instance;
+
+//初始化方法
+- (WV*)init{
+    // 只进行一次
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [super init];
+    });
+    if (!_instance.msgList) {
+        _instance.msgList = [NSMutableArray array];
     }
-    return self;
+    
+    return _instance;
+}
+
++ (WV*) getInstance {
+    return [[self alloc] init];
+}
+
+//alloc会调用allocWithZone:
++(WV*)allocWithZone:(struct _NSZone *)zone{
+    //只进行一次
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [super allocWithZone:zone];
+    });
+    return _instance;
+}
+
+//copy在底层 会调用copyWithZone:
+- (id)copyWithZone:(NSZone *)zone{
+    return  _instance;
+}
++ (id)copyWithZone:(struct _NSZone *)zone{
+    return  _instance;
+}
++ (id)mutableCopyWithZone:(struct _NSZone *)zone{
+    return _instance;
+}
+- (id)mutableCopyWithZone:(NSZone *)zone{
+    return _instance;
 }
 
 
@@ -24,6 +60,7 @@
 - (void) initWebView:(WKWebView *)av popView:(WKWebView *)pv{
     self.appView = av;
     self.popView = pv;
+    
     
     
     [av.configuration.userContentController addScriptMessageHandler:self  name:@"APP_VIEW"];
@@ -50,6 +87,12 @@
     [webView loadRequest:request];
 }
 
+-(void) webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    NSLog(@"webview finish");
+    [WV setStatus:true];
+    [self flushMessage];
+}
+
 - (void) resetUA {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
 
@@ -73,8 +116,42 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self.popView setCustomUserAgent:newUserAgent];
     }];
+    
 }
 
+- (void) sendMessage: (NSString *) evt message:(NSString *)arg {
+    
+    NSLog(@"%@,%@", evt,arg);
+    if(!self.status){
+        NSLog(@"添加msgList");
+        NSArray * msg = [[NSArray alloc] initWithObjects:evt, arg, nil];
+        [[WV getInstance].msgList addObject:msg];
+    } else {
+        NSLog(@"sendMessage");
+        NSString *script = [[[[@"window.__receiveJHMessage('" stringByAppendingString:evt] stringByAppendingString:@"','"] stringByAppendingString: arg] stringByAppendingString: @"')"];
+        [[WV getInstance].appView evaluateJavaScript:script completionHandler:^(id xxx, NSError * _Nullable error) {
+            if(error) {
+                NSLog(@"%@", error);
+            }
+        }];
+    }
+    
+}
+- (void) flushMessage {
+    [self setStatus:true];
+
+    for (int i =0; i < self.msgList.count; i++) {
+        NSArray * msg = [self.msgList objectAtIndex:i];
+        NSString *type = [msg objectAtIndex:0];
+        NSString *arg = [msg objectAtIndex:1];
+        [self sendMessage:type message:arg];
+    }
+    [self.msgList removeAllObjects];
+}
++ (void) setStatus: (BOOL) status {
+    NSLog(@"设置状态%@",status?@"true":@"false");
+    [WV getInstance].status = status;
+}
 
 
 #pragma mark - WKScriptMessageHandler
