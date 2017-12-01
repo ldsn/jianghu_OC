@@ -89,8 +89,6 @@ static WV* _instance;
 
 -(void) webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     NSLog(@"webview finish");
-    [WV setStatus:true];
-    [self flushMessage];
 }
 
 - (void) resetUA {
@@ -157,30 +155,34 @@ static WV* _instance;
 #pragma mark - WKScriptMessageHandler
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     NSLog(@"name:%@\\\\n body:%@\\\\n frameInfo:%@\\\\n",message.name,message.body,message.frameInfo);
-        NSDictionary *body = message.body;
-        NSString *event = [body valueForKey:@"event"];
-        NSString *arg = [body valueForKey:@"arg"];
-        if ([event isEqualToString:@"load"]) {
-            NSLog(@"%@",arg);
-            [self.popView evaluateJavaScript:@"window.document && (document.innerHTML = '')" completionHandler:^(id xxx, NSError * _Nullable error) {
-            }];
-            NSURLRequest *URL = [NSURLRequest requestWithURL: [NSURL URLWithString:arg] cachePolicy:1 timeoutInterval:30.0f];
-            [self.popView loadRequest: URL];
+    NSDictionary *body = message.body;
+    NSString *event = [body valueForKey:@"event"];
+    NSString *arg = [body valueForKey:@"arg"];
+    if ([event isEqualToString:@"load"]) {
+        NSLog(@"%@",arg);
+        [self.popView evaluateJavaScript:@"window.document && (document.innerHTML = '')" completionHandler:^(id xxx, NSError * _Nullable error) {
+        }];
+        NSURLRequest *URL = [NSURLRequest requestWithURL: [NSURL URLWithString:arg] cachePolicy:1 timeoutInterval:30.0f];
+        [self.popView loadRequest: URL];
+    }
+    if ([event isEqualToString:@"hide"]) {
+        [self.popView setHidden:true];
+    }
+    if ([event isEqualToString:@"show"]) {
+        [self.popView setHidden:false];
+    }
+    
+    if ([event isEqualToString:@"back"]) {
+        if ([message.name isEqualToString:@"APP_VIEW"]) {
+            [self.appView goBack];
+        } else if ([message.name isEqualToString:@"POP_VIEW"]) {
+            [self.popView goBack];
         }
-        if ([event isEqualToString:@"hide"]) {
-            [self.popView setHidden:true];
-        }
-        if ([event isEqualToString:@"show"]) {
-            [self.popView setHidden:false];
-        }
-        
-        if ([event isEqualToString:@"back"]) {
-            if ([message.name isEqualToString:@"APP_VIEW"]) {
-                [self.appView goBack];
-            } else if ([message.name isEqualToString:@"POP_VIEW"]) {
-                [self.popView goBack];
-            }
-        }
+    }
+    
+    if ([event isEqualToString:@"inited"]){
+        [self flushMessage];
+    }
 }
 
 

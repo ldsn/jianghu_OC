@@ -41,10 +41,11 @@
     <body>
         a<br>
         <script>
+            window.webkit.messageHandlers["APP_VIEW"].postMessage({event:'inited',arg:''});
             window.__receiveJHMessage = function(evt, arg) {
                 document.body.innerHTML = document.body.innerHTML + evt + "  " + arg + "<br>";
             }
-            </script>
+        </script>
     </body>
     
 </html>
