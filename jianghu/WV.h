@@ -8,16 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
+#import "PopView.h"
 
 
 @interface WV : NSObject <WKScriptMessageHandler, WKNavigationDelegate>
 
 @property WKWebView *appView;
-@property WKWebView *popView;
+@property PopView *popView;
 @property NSMutableArray *msgList;
 @property BOOL status;
 
--(void) initWebView: (WKWebView*)av popView: (WKWebView*)pv;
+-(void) initWebView: (WKWebView*)av popView: (PopView*)pv;
 -(void) sendMessage: (NSString *) evt message:(NSString *)arg;
 - (void) flushMessage;
 + (void) setStatus: (BOOL) status;

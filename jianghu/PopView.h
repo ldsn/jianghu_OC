@@ -9,5 +9,6 @@
 #import <WebKit/WebKit.h>
 
 @interface PopView: WKWebView
-
+@property(nonatomic) float clickAlpha;
+-(void) modifyClickAlpha:(float)clickAlpha;
 @end

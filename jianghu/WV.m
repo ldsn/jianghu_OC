@@ -57,7 +57,7 @@ static WV* _instance;
 
 
 
-- (void) initWebView:(WKWebView *)av popView:(WKWebView *)pv{
+- (void) initWebView:(WKWebView *)av popView:(PopView *)pv{
     self.appView = av;
     self.popView = pv;
     
@@ -76,6 +76,7 @@ static WV* _instance;
     [self.popView setOpaque:false];
     [self.popView setBackgroundColor:[UIColor clearColor]];
     [self.popView.scrollView setBackgroundColor:[UIColor clearColor]];
+    [self.popView modifyClickAlpha:0.2f];
     
     [self resetUA];
     
@@ -182,6 +183,16 @@ static WV* _instance;
     
     if ([event isEqualToString:@"inited"]){
         [self flushMessage];
+    }
+    
+    if ([event isEqualToString:@"config"]) {
+        NSDictionary* config = [body valueForKey:@"arg"];
+        NSString* clickAlpha = [config valueForKey: @"clickAlpha"];
+        float a = [clickAlpha floatValue];
+        NSLog(@"%@,%f", clickAlpha, a);
+        if (clickAlpha) {
+            [self.popView modifyClickAlpha:[clickAlpha floatValue]];
+        }
     }
 }
 

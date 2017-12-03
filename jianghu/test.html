@@ -41,10 +41,14 @@
     <body>
         a<br>
         <script>
+            console.log(123)
             window.webkit.messageHandlers["APP_VIEW"].postMessage({event:'inited',arg:''});
             window.__receiveJHMessage = function(evt, arg) {
                 document.body.innerHTML = document.body.innerHTML + evt + "  " + arg + "<br>";
             }
+        window.webkit.messageHandlers["APP_VIEW"].postMessage({event: 'show', arg: ''});
+        window.webkit.messageHandlers["APP_VIEW"].postMessage({event: 'load', arg: 'http://baidu.com'});
+//        window.webkit.messageHandlers["APP_VIEW"].postMessage({event: 'config', arg:{clickAlpha: 0.2}});
         </script>
     </body>
     

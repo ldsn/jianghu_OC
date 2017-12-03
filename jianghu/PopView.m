@@ -10,13 +10,20 @@
 
 @implementation PopView
 
-
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    
     CGFloat alpha = [self getPointAlpha:point];
-    return alpha > 0.2f;
+    NSLog(@"ClickAlpha: %f, currAlpha%f", self.clickAlpha, alpha);
+    return alpha > self.clickAlpha;
+}
+
+-(void) modifyClickAlpha:(float)clickAlpha{
+    NSLog(@"setClickAlpha: %f", clickAlpha);
+    self.clickAlpha = clickAlpha;
 }
 
 - (CGFloat)getPointAlpha:(CGPoint)point {
+    NSLog(@"Point:%f,%f",point.x, point.y);
     unsigned char pixel[4] = {0};
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, kCGBitmapAlphaInfoMask & kCGImageAlphaPremultipliedLast);
@@ -26,7 +33,7 @@
     
     CGContextRelease(context);
     CGColorSpaceRelease(colorSpace);
-
+    
     return pixel[3]/255.0;
 }
 @end
