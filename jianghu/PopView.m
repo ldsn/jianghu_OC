@@ -11,7 +11,11 @@
 @implementation PopView
 
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
-    
+    if(self.clickAlpha == 0) {
+        return true;
+    } else if (self.clickAlpha == 1){
+        return false;
+    }
     CGFloat alpha = [self getPointAlpha:point];
     NSLog(@"ClickAlpha: %f, currAlpha%f", self.clickAlpha, alpha);
     return alpha > self.clickAlpha;

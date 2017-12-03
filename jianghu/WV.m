@@ -165,6 +165,9 @@ static WV* _instance;
         }];
         NSURLRequest *URL = [NSURLRequest requestWithURL: [NSURL URLWithString:arg] cachePolicy:1 timeoutInterval:30.0f];
         [self.popView loadRequest: URL];
+        [self setConfig: [NSDictionary dictionaryWithObjectsAndKeys:
+                          @"clickAlpha", @"0",
+                          nil]];
     }
     if ([event isEqualToString:@"hide"]) {
         [self.popView setHidden:true];
@@ -187,15 +190,18 @@ static WV* _instance;
     
     if ([event isEqualToString:@"config"]) {
         NSDictionary* config = [body valueForKey:@"arg"];
-        NSString* clickAlpha = [config valueForKey: @"clickAlpha"];
-        float a = [clickAlpha floatValue];
-        NSLog(@"%@,%f", clickAlpha, a);
-        if (clickAlpha) {
-            [self.popView modifyClickAlpha:[clickAlpha floatValue]];
-        }
+        [self setConfig: config];
+    }
+    
+}
+-(void)setConfig:(NSDictionary*)conf{
+    NSString* clickAlpha = [conf valueForKey: @"clickAlpha"];
+    float a = [clickAlpha floatValue];
+    NSLog(@"%@,%f", clickAlpha, a);
+    if (clickAlpha) {
+        [self.popView modifyClickAlpha:[clickAlpha floatValue]];
     }
 }
-
 
 
 @end

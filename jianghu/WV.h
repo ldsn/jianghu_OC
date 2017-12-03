@@ -21,6 +21,7 @@
 -(void) initWebView: (WKWebView*)av popView: (PopView*)pv;
 -(void) sendMessage: (NSString *) evt message:(NSString *)arg;
 - (void) flushMessage;
+-(void)setConfig:(NSDictionary*)conf;
 + (void) setStatus: (BOOL) status;
 +(WV*) getInstance;
 @end
